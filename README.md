@@ -5,6 +5,21 @@ This repo has been connected to a TiDB Cloud cluster using the TiDB Cloud GitHub
 
 You can open a PR in this repo to have a try. You can also use this step-by-step tutorial to build your own example.
 
+- [Before you start](#before-you-start)
+- [Connect TiDB Cloud to your GitHub repository](#connect-tidb-cloud-to-your-github-repository)
+- [GitHub App](#github-app)
+  * [Open a PR](#open-a-pr)
+  * [New commit in a PR](#new-commit-in-a-pr)
+  * [Close a PR](#close-a-pr)
+  * [Reopen a PR](#reopen-a-pr)
+- [Configuring GitHub App](#configuring-for-github-app)
+  * [branch.blackList](#branchblacklist)
+  * [branch.whiteList](#branchwhitelist)
+  * [branch.level](#branchlevel)
+  * [branch.autoReserved](#branchautoreserved)
+  * [branch.autoDestroy](#branchautodestroy)
+- [Use the Branch in GitOps Workflow](#use-the-branch-in-gitops-workflow)
+
 ## Before you start
 
 Before you start, make sure you have:
@@ -80,7 +95,7 @@ GitHub App will delete all the branchs in this PR.
 
 GitHub App will create a branch for the lasted commit.
 
-## Configuring for GitHub App
+## Configuring GitHub App
 
 The following configuration options can be used through a tidbcloud.yml file in the root of your repository.
 
