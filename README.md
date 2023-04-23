@@ -21,7 +21,7 @@ Before you start, make sure you have:
 
 <img width="1417" alt="image" src="https://user-images.githubusercontent.com/52435083/233818397-96e2c8d6-5971-4f2b-b9a6-e278293cf9f4.png">
 
-2. Go to the GitHub integration and click connection button. 
+2. Go to the GitHub integration and click `connect` button. 
     - If you have not login the GitHub, you will be asked to login the GitHub account in a pop-ups. 
     - If it is the frist time you use the integration, you will be asked authorize the GitHub app in a pop-ups.
     
@@ -54,4 +54,8 @@ Choose a repository under the account you selected.
 Click the `Connect` button to connect between the TiDB Cloud cluster and GitHub repository. 
 
 <img width="1117" alt="image" src="https://user-images.githubusercontent.com/52435083/233826403-b9480b8d-9c95-47b6-a4b3-6c76885c1341.png">
+
+
+## Open a PR in the connected repository
+
 
