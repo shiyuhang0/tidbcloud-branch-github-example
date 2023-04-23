@@ -1,0 +1,24 @@
+name: 'wait'
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: tidbcloud/wait-for-tidbcloud-branch@v0
+        id: wait-for-branch
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          publicKey: ${{ secrets.TIDB_CLOUD_PUBLIC_KEY }}
+          privateKey: ${{ secrets.TIDB_CLOUD_PRIVATE_KEY }}
+          env: dev
+      - name: Use the output
+        run: |
+          echo "The host is ${{ steps.wait-for-branch.outputs.host }}"
+          echo "The username is ${{ steps.wait-for-branch.outputs.username }}"
+          echo "The password is ${{ steps.wait-for-branch.outputs.password }}"
