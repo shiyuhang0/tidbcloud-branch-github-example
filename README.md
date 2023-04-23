@@ -1,5 +1,7 @@
 # tidbcloud-branch-github-example
 
+> **Warning:** TiDB Cloud Branch and the corrsponding GitHub App are still in beta. You can't get the GitHub integration in the TiDB Cloud website if you are not the PingCAP staffs.
+
 This repo has been connected to a TiDB Cloud cluster using the TiDB Cloud GitHub integration. This brings database branches to your GitHub workflows, the TiDB Cloud App will automatically manage database branches for you when PR, commits are created.
 
 You can open a PR in this repo to have a try. You can also use this step-by-step tutorial to build your own example.
