@@ -14,11 +14,12 @@ jobs:
         id: wait-for-branch
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          publicKey: ${{ secrets.TIDB_CLOUD_PUBLIC_KEY }}
-          privateKey: ${{ secrets.TIDB_CLOUD_PRIVATE_KEY }}
+          public-key: ${{ secrets.TIDB_CLOUD_PUBLIC_KEY }}
+          private-key: ${{ secrets.TIDB_CLOUD_PRIVATE_KEY }}
           env: dev
       - name: Use the output
         run: |
           echo "The host is ${{ steps.wait-for-branch.outputs.host }}"
+          echo "The port is ${{ steps.wait-for-branch.outputs.port }}"
           echo "The username is ${{ steps.wait-for-branch.outputs.username }}"
           echo "The password is ${{ steps.wait-for-branch.outputs.password }}"
