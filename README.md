@@ -25,8 +25,7 @@ Before you start, make sure you have:
     - If you have not login the GitHub, you will be asked to login the GitHub account in a pop-ups. 
     - If it is the frist time you use the integration, you will be asked authorize the GitHub app.
     
-<img width="783" alt="image" src="https://user-images.githubusercontent.com/52435083/233818438-8208fe6f-7dde-4b08-9c7e-e2fe3b0b55d3.png">
-<img width="570" alt="image" src="https://user-images.githubusercontent.com/52435083/233818947-16b6376f-dccc-44a2-8688-a32685a93fef.png">
+<img width="793" alt="image" src="https://user-images.githubusercontent.com/52435083/233824789-37c55dfb-939f-48bd-8773-9e47aa3bdd7a.png">
 
 
 3. Select A TiDB Cloud 
