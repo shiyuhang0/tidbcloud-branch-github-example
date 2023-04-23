@@ -173,8 +173,4 @@ steps:
 ```
 
 
-This action will wait until the TiDB Cloud branch created by GitHub app is avaliable. Then generate a sql user for this branch.
-
-
-
 
