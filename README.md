@@ -56,6 +56,125 @@ Click the `Connect` button to connect between the TiDB Cloud cluster and GitHub 
 <img width="1117" alt="image" src="https://user-images.githubusercontent.com/52435083/233826403-b9480b8d-9c95-47b6-a4b3-6c76885c1341.png">
 
 
-## Open a PR in the connected repository
+## GitHub App
+
+After you connect a TiDB Cloud cluster to a GitHub repository. A GitHub App will work in this repository, trying to manage TiDB Cloud Branch in every PR.
+
+### Open a PR
+
+GitHub App will create a TiDB Cloud Branch every time you open a PR under the repository. The branch name is `${github_branch_name}_${pr_id}_${commit_sha}`
+
+<img width="823" alt="image" src="https://user-images.githubusercontent.com/52435083/233826740-9cdf13a2-b8cf-4a59-b7b4-5c2756440a79.png">
+
+### New commit in a PR
+
+GitHub App delete the previous branch and create a new TiDB Cloud Branch for the lasted commit.
+
+<img width="821" alt="image" src="https://user-images.githubusercontent.com/52435083/233826906-dd792d46-eb3d-457c-b22e-4134ffcc0ed7.png">
+
+### Close a PR
+
+GitHub App will delete all the branchs in this PR.
+
+### Reopen a PR
+
+GitHub App will create a branch for the lasted commit.
+
+## Configuring for GitHub App
+
+The following configuration options can be used through a tidbcloud.yml file in the root of your repository.
+
+### branch.blackList
+
+**type:** Array of string. **Default:** `[]`.
+
+Specify the branches that forbid the GitHub App, even if it is in the whiteList.
+
+```
+github:
+    branch:
+       blackList:
+           - ".*_doc"
+           - ".*_blackList"
+```
+
+### branch.whiteList
+
+**type:** Array of string. **Default:** `[.*]`.
+
+Specify the branches that allow the GitHub App.
+
+```
+github:
+    branch:
+       whiteList: 
+           - ".*_db"
+```
+
+### branch.level
+
+**type:** string. **Default:** `COMMIT`.
+
+`PR` and `COMMIT` are allowed. If set to `PR`, TiDB Cloud App will not create new TiDB Cloud branch for new commit on a pull request.
+
+```
+github:
+    branch:
+       level: "COMMIT"
+```
+
+### branch.autoReserved
+
+**type:** boolean. **Default:** `false`.
+
+If set to true, TiDB Cloud App will not delete the TiDB Cloud branch which created in the previous commit.
+
+```
+github:
+    branch:
+       autoReserved: false
+```
+
+### branch.autoDestroy
+
+**type:** boolean. **Default:** `true`.
+
+If set to false, TiDB Cloud App will not delete the TiDB Cloud branch when the pull request is closed.
+
+```
+github:
+    branch:
+       autoDestroy: true
+```
+
+## Use the Branch in GitOps Workflow
+
+It is highly recommended running your CI with the TiDB Cloud branch rather than the production cluster before merging the pull request.
+
+Use [wait-for-tidbcloud-branch]() action to wait for the ready of TiDB Cloud branch and get the connection information.
+
+Here is an example:
+
+```
+steps:
+  - name: Wait for TiDB Cloud branch ready
+    uses: tidbcloud/wait-for-tidbcloud-branch@v0
+    id: wait-for-branch
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      publicKey: ${{ secrets.TIDB_CLOUD_API_PUBLIC_KEY }}
+      privateKey: ${{ secrets.TIDB_CLOUD_API_PRIVATE_KEY }}
+
+  - name: Test with TiDB Cloud branch
+     run: |
+        echo "The host is ${{ steps.wait-for-branch.outputs.host }}"
+        echo "The user is ${{ steps.wait-for-branch.outputs.user }}"
+        echo "The password is ${{ steps.wait-for-branch.outputs.password }}"
+```
+
+
+This action will wait until the TiDB Cloud branch created by GitHub app is avaliable. Then generate a sql user for this branch.
+
+
 
 
