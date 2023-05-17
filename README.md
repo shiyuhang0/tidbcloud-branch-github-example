@@ -128,18 +128,6 @@ github:
            - ".*_db"
 ```
 
-### branch.level
-
-**type:** string. **Default:** `COMMIT`.
-
-`PR` and `COMMIT` are allowed. If set to `PR`, TiDB Cloud App will not create new TiDB Cloud branch for new commit on a pull request.
-
-```
-github:
-    branch:
-       level: "COMMIT"
-```
-
 ### branch.autoReserved
 
 **type:** boolean. **Default:** `false`.
